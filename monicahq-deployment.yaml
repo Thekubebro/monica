@@ -1,0 +1,266 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.dev.yml
+    kompose.version: 1.15.0 (e3cd4d4)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: monicahq
+  name: monicahq
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: monicahq
+    spec:
+      containers:
+      - env:
+        - name: 2FA_ENABLED
+          valueFrom:
+            configMapKeyRef:
+              key: 2FA_ENABLED
+              name: monicahq-env-dev
+        - name: APP_DEBUG
+          valueFrom:
+            configMapKeyRef:
+              key: APP_DEBUG
+              name: monicahq-env-dev
+        - name: APP_DEFAULT_LOCALE
+          valueFrom:
+            configMapKeyRef:
+              key: APP_DEFAULT_LOCALE
+              name: monicahq-env-dev
+        - name: APP_DEFAULT_TIMEZONE
+          valueFrom:
+            configMapKeyRef:
+              key: APP_DEFAULT_TIMEZONE
+              name: monicahq-env-dev
+        - name: APP_DISABLE_SIGNUP
+          valueFrom:
+            configMapKeyRef:
+              key: APP_DISABLE_SIGNUP
+              name: monicahq-env-dev
+        - name: APP_EMAIL_NEW_USERS_NOTIFICATION
+          valueFrom:
+            configMapKeyRef:
+              key: APP_EMAIL_NEW_USERS_NOTIFICATION
+              name: monicahq-env-dev
+        - name: APP_ENV
+          valueFrom:
+            configMapKeyRef:
+              key: APP_ENV
+              name: monicahq-env-dev
+        - name: APP_KEY
+          valueFrom:
+            configMapKeyRef:
+              key: APP_KEY
+              name: monicahq-env-dev
+        - name: APP_SIGNUP_DOUBLE_OPTIN
+          valueFrom:
+            configMapKeyRef:
+              key: APP_SIGNUP_DOUBLE_OPTIN
+              name: monicahq-env-dev
+        - name: APP_TRUSTED_PROXIES
+          valueFrom:
+            configMapKeyRef:
+              key: APP_TRUSTED_PROXIES
+              name: monicahq-env-dev
+        - name: APP_URL
+          valueFrom:
+            configMapKeyRef:
+              key: APP_URL
+              name: monicahq-env-dev
+        - name: AWS_BUCKET
+          valueFrom:
+            configMapKeyRef:
+              key: AWS_BUCKET
+              name: monicahq-env-dev
+        - name: AWS_KEY
+          valueFrom:
+            configMapKeyRef:
+              key: AWS_KEY
+              name: monicahq-env-dev
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              key: AWS_REGION
+              name: monicahq-env-dev
+        - name: AWS_SECRET
+          valueFrom:
+            configMapKeyRef:
+              key: AWS_SECRET
+              name: monicahq-env-dev
+        - name: AWS_SERVER
+          valueFrom:
+            configMapKeyRef:
+              key: AWS_SERVER
+              name: monicahq-env-dev
+        - name: CACHE_DRIVER
+          valueFrom:
+            configMapKeyRef:
+              key: CACHE_DRIVER
+              name: monicahq-env-dev
+        - name: CHECK_VERSION
+          valueFrom:
+            configMapKeyRef:
+              key: CHECK_VERSION
+              name: monicahq-env-dev
+        - name: DB_CONNECTION
+          valueFrom:
+            configMapKeyRef:
+              key: DB_CONNECTION
+              name: monicahq-env-dev
+        - name: DB_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              key: DB_DATABASE
+              name: monicahq-env-dev
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: DB_HOST
+              name: monicahq-env-dev
+        - name: DB_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: DB_PASSWORD
+              name: monicahq-env-dev
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: DB_PORT
+              name: monicahq-env-dev
+        - name: DB_PREFIX
+          valueFrom:
+            configMapKeyRef:
+              key: DB_PREFIX
+              name: monicahq-env-dev
+        - name: DB_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              key: DB_USERNAME
+              name: monicahq-env-dev
+        - name: DEFAULT_FILESYSTEM
+          valueFrom:
+            configMapKeyRef:
+              key: DEFAULT_FILESYSTEM
+              name: monicahq-env-dev
+        - name: HASH_LENGTH
+          valueFrom:
+            configMapKeyRef:
+              key: HASH_LENGTH
+              name: monicahq-env-dev
+        - name: HASH_SALT
+          valueFrom:
+            configMapKeyRef:
+              key: HASH_SALT
+              name: monicahq-env-dev
+        - name: LOG_CHANNEL
+          valueFrom:
+            configMapKeyRef:
+              key: LOG_CHANNEL
+              name: monicahq-env-dev
+        - name: MAIL_DRIVER
+          valueFrom:
+            configMapKeyRef:
+              key: MAIL_DRIVER
+              name: monicahq-env-dev
+        - name: MAIL_ENCRYPTION
+          valueFrom:
+            configMapKeyRef:
+              key: MAIL_ENCRYPTION
+              name: monicahq-env-dev
+        - name: MAIL_FROM_ADDRESS
+          valueFrom:
+            configMapKeyRef:
+              key: MAIL_FROM_ADDRESS
+              name: monicahq-env-dev
+        - name: MAIL_FROM_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: MAIL_FROM_NAME
+              name: monicahq-env-dev
+        - name: MAIL_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: MAIL_HOST
+              name: monicahq-env-dev
+        - name: MAIL_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: MAIL_PASSWORD
+              name: monicahq-env-dev
+        - name: MAIL_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: MAIL_PORT
+              name: monicahq-env-dev
+        - name: MAIL_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MAIL_USERNAME
+              name: monicahq-env-dev
+        - name: QUEUE_DRIVER
+          valueFrom:
+            configMapKeyRef:
+              key: QUEUE_DRIVER
+              name: monicahq-env-dev
+        - name: REQUIRES_SUBSCRIPTION
+          valueFrom:
+            configMapKeyRef:
+              key: REQUIRES_SUBSCRIPTION
+              name: monicahq-env-dev
+        - name: SENTRY_DSN
+          valueFrom:
+            configMapKeyRef:
+              key: SENTRY_DSN
+              name: monicahq-env-dev
+        - name: SENTRY_SUPPORT
+          valueFrom:
+            configMapKeyRef:
+              key: SENTRY_SUPPORT
+              name: monicahq-env-dev
+        - name: SESSION_DRIVER
+          valueFrom:
+            configMapKeyRef:
+              key: SESSION_DRIVER
+              name: monicahq-env-dev
+        - name: SESSION_LIFETIME
+          valueFrom:
+            configMapKeyRef:
+              key: SESSION_LIFETIME
+              name: monicahq-env-dev
+        image: monicahq
+        name: monicahq
+        ports:
+        - containerPort: 80
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/www/monica/storage
+          name: monicahq-claim0
+        - mountPath: /var/www/monica/app
+          name: monicahq-claim1
+        - mountPath: /var/www/monica/routes
+          name: monicahq-claim2
+        - mountPath: /var/www/monica/database
+          name: monicahq-claim3
+      restartPolicy: Always
+      volumes:
+      - name: monicahq-claim0
+        persistentVolumeClaim:
+          claimName: monicahq-claim0
+      - name: monicahq-claim1
+        persistentVolumeClaim:
+          claimName: monicahq-claim1
+      - name: monicahq-claim2
+        persistentVolumeClaim:
+          claimName: monicahq-claim2
+      - name: monicahq-claim3
+        persistentVolumeClaim:
+          claimName: monicahq-claim3
+status: {}
